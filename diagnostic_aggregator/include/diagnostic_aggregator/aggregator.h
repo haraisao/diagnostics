@@ -57,6 +57,7 @@
 #include "diagnostic_aggregator/status_item.h"
 #include "diagnostic_aggregator/other_analyzer.h"
 
+#include "exportdecl.h"
 
 namespace diagnostic_aggregator {
 
@@ -102,7 +103,7 @@ analyzers:
  * any analyzer is not properly specified, or returns false on initialization,
  * the aggregator will report the error and publish it in the aggregated output.
  */
-class Aggregator
+class DIAGNOSTIC_AGGREGATOR_DECL Aggregator
 { 
 public:
   /*!

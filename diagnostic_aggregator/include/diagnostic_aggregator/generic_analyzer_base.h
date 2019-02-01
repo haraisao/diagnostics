@@ -90,8 +90,11 @@ public:
     nice_name_ = nice_name;
     path_ = path;
     discard_stale_ = discard_stale;
-
+#ifdef WIN32
+    if (discard_stale_ && timeout <= 0)
+#else
     if (discard_stale_ and timeout <= 0)
+#endif
     {
       ROS_WARN("Cannot discard stale items if no timeout specified. No items will be discarded");
       discard_stale_ = false;
@@ -160,7 +163,11 @@ public:
         stale = (ros::Time::now() - item->getLastUpdateTime()).toSec() > timeout_;
 
       // Erase item if its stale and we're discarding items
+#ifdef WIN32
+      if (discard_stale_ && stale)
+#else
       if (discard_stale_ and stale)
+#endif
       {
         items_.erase(it++);
         continue;
@@ -201,7 +208,11 @@ public:
       header_status->level = 0;
       header_status->message = "OK";
     }
+#ifdef WIN32
+    else if (num_items_expected_ > 0 && int(items_.size()) != num_items_expected_)
+#else
     else if (num_items_expected_ > 0 and int(items_.size()) != num_items_expected_)
+#endif
     {
       int8_t lvl = 2;
       header_status->level = std::max(lvl, header_status->level);

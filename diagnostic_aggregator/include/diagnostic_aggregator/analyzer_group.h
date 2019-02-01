@@ -54,6 +54,8 @@
 #include "pluginlib/class_loader.hpp"
 #include "pluginlib/class_list_macros.hpp"
 
+#include "exportdecl.h"
+
 namespace diagnostic_aggregator {
 
 /*!
@@ -107,7 +109,7 @@ namespace diagnostic_aggregator {
  * The Aggregator uses the AnalyzerGroup internally to load and update analyzers.
  *
  */
-class AnalyzerGroup : public Analyzer
+class DIAGNOSTIC_AGGREGATOR_DECL AnalyzerGroup : public Analyzer
 {
 public:
   AnalyzerGroup();

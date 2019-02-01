@@ -46,6 +46,8 @@
 #include <diagnostic_msgs/KeyValue.h>
 #include "diagnostic_aggregator/status_item.h"
 
+#include "exportdecl.h"
+
 namespace diagnostic_aggregator {
 
 /*!
@@ -82,7 +84,7 @@ PATH/EtherCAT Devices
  * analyzers are not allowed to change which messages they want to look at. 
  *
  */
-class Analyzer
+class DIAGNOSTIC_AGGREGATOR_DECL Analyzer
 {
 public:
   /*!
